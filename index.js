@@ -5,9 +5,12 @@ import { readdir } from 'node:fs/promises'
 console.log('Welcome to the terminal, Earthling!')
 console.log('Please enter a number to view the artwork.')
 
-prompt.message = 'Plase choose an artwork'
-prompt.delimiter = ': '
-prompt.start()
+async function promptMsg() {
+  prompt.message = 'Plase choose an artwork'
+  prompt.delimiter = ': '
+  prompt.start()
+}
+await promptMsg()
 
 const choice = {
   name: 'choice',
@@ -15,13 +18,16 @@ const choice = {
   message: 'Enter artwork number',
 }
 
-try {
-  let idx = 1
-  const files = await readdir('./data')
-  for (const file of files) console.log(idx++, file)
-} catch (err) {
-  console.error(err)
+async function display() {
+  try {
+    let idx = 1
+    const files = await readdir('./data')
+    for (const file of files) console.log(idx++, file)
+  } catch (err) {
+    console.error(err)
+  }
 }
+await display()
 
 async function main() {
   const result = await prompt.get(choice)
@@ -30,13 +36,8 @@ async function main() {
 
   // make conditionals
   if (userInput === 'q') {
-    try {
-      let idx = 1
-      const files = await readdir('./data')
-      for (const file of files) console.log(idx++, file)
-    } catch (err) {
-      console.error(err)
-    }
+    console.clear()
+  } else if (userInput === 'c') {
   } else if (userInput === 1 || userInput === '1') {
     console.log(await fsPromises.readFile('./data/kea.txt', 'utf-8'))
   } else if (userInput === 2 || userInput === '2') {
