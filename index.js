@@ -28,6 +28,22 @@ async function main() {
   // do something with `result`
 }
 
+// make conditionals
+
+if (userInput === 1 || userInput === '1') {
+  console.log(readFile('./data/kea.txt', 'utf-8'))
+} else if (userInput === 2 || userInput === '2') {
+  console.log(readFile('./data/kiwi.txt', 'utf-8'))
+} else if (userInput === 3 || userInput === '3') {
+  console.log(readFile('./data/manaia.txt', 'utf-8'))
+} else if (userInput === 4 || userInput === '4') {
+  console.log(readFile('./data/nikau.txt', 'utf-8'))
+} else if (userInput === 5 || userInput === '5') {
+  console.log(readFile('./data/pohutukawa.txt', 'utf-8'))
+} else {
+  console.log('Please enter a valid number.')
+}
+
 // run the async main function and catch any errors
 main().catch((err) => {
   // if an error was thrown, show it in the console
@@ -38,5 +54,7 @@ main().catch((err) => {
 
 // [x] Welcome message
 // [x] display list of artworks
-// [] when a user enters a number, an artwork will be displayed. (use if statement or switch??)
+// [] how to receive user input?
+// [x] make conditional for the user input (switch or if)
+// [] when a user enters a number, an artwork will be displayed.
 //
