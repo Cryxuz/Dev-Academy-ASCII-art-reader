@@ -3,7 +3,7 @@ import prompt from 'prompt'
 import { readdir } from 'node:fs/promises'
 
 console.log(
-  'Welcome to the terminal, Earthling! \nPlease enter a number to view the artwork. \npress q to quit \npress c to comment \npress v to read comments'
+  'Welcome to the terminal, Earthling! \nPlease enter a number to view the artwork. \npress q to quit \npress c to comment \npress v to read comments \npress d to delete comments'
 )
 
 const choice = {
@@ -25,6 +25,10 @@ async function exit() {
   setTimeout(() => {
     console.clear()
   }, '2500')
+}
+// delete comments
+async function delComments() {
+  fsPromises.writeFile('comments.txt', '')
 }
 // display options
 async function display() {
@@ -86,6 +90,9 @@ async function main() {
         break
       case 'c':
         await promptComment()
+        break
+      case 'd':
+        await delComments()
         break
       case '1':
         console.log(fileDir[0])
