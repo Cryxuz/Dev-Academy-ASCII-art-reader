@@ -57,6 +57,15 @@ async function readComments() {
   console.log('comments: ', await fsPromises.readFile('comments.txt', 'utf-8'))
 }
 
+// file directory
+let fileDir = [
+  await fsPromises.readFile('./data/kea.txt', 'utf-8'),
+  await fsPromises.readFile('./data/kiwi.txt', 'utf-8'),
+  await fsPromises.readFile('./data/manaia.txt', 'utf-8'),
+  await fsPromises.readFile('./data/nikau.txt', 'utf-8'),
+  await fsPromises.readFile('./data/pohutukawa.txt', 'utf-8'),
+]
+
 //
 // main function
 //
@@ -79,19 +88,19 @@ async function main() {
         await promptComment()
         break
       case '1':
-        console.log(await fsPromises.readFile('./data/kea.txt', 'utf-8'))
+        console.log(fileDir[0])
         break
       case '2':
-        console.log(await fsPromises.readFile('./data/kiwi.txt', 'utf-8'))
+        console.log(fileDir[1])
         break
       case '3':
-        console.log(await fsPromises.readFile('./data/manaia.txt', 'utf-8'))
+        console.log(fileDir[2])
         break
       case '4':
-        console.log(await fsPromises.readFile('./data/nikau.txt', 'utf-8'))
+        console.log(fileDir[3])
         break
       case '5':
-        console.log(await fsPromises.readFile('./data/pohutukawa.txt', 'utf-8'))
+        console.log(fileDir[4])
         break
       default:
         console.log('Please enter a valid number.')
@@ -102,14 +111,8 @@ async function main() {
   }
 }
 main()
-// trial refactor file directory
-let fileDir = [
-  './data/kea.txt',
-  './data/kiwi.txt',
-  './data/manaia.txt',
-  './data/nikau.txt',
-  './data/pohutukawa.txt',
-]
+
+//
 
 // [x] Welcome message
 // [x] display list of artworks
